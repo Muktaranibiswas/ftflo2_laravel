@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder {
 
 
         $this->call('VoterentrysTableSeeder');
+        $this->call('CandidatesTableSeeder');
+        $this->call('CastingsTableSeeder');
+
 	}
 
 }

@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Voterentry extends Model {
+class Candidate extends Model {
 
     protected $guarded = [];
+
 }

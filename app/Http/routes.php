@@ -10,6 +10,12 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
+
+Route::model('candidates', 'Candidate');
+Route::model('castings', 'Casting');
 Route::model('voterentrys', 'Voterentry');
 
-Route::resource('voterentrys', 'VoterentrysController');
+
+Route::resource('candidates', 'CandidatesController');
+Route::resource('castings', 'CastingsController');
+Route::resource('voterentrys', 'VoterentryController');

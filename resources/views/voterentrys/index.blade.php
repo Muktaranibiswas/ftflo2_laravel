@@ -4,7 +4,7 @@
     <h2>Voter Entry</h2>
  
     @if ( !$voterentrys->count() )
-        You have no projects
+        You have no list
     @else
         <ul>
             @foreach( $voterentrys as $voterentry )
@@ -13,15 +13,15 @@
                         <a href="{{ route('voterentrys.show', $voterentry->id) }}">{{ $voterentry->voter_name }}</a>
                         (
                             {!! link_to_route('voterentrys.edit', 'Edit', array($voterentry->id), array('class' => 'btn btn-info')) !!},
-                            {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+                            {!! Form::Save('Delete', array('class' => 'btn btn-danger')) !!}
                         )
                     {!! Form::close() !!}
                 </li>
             @endforeach
         </ul>
     @endif
- 
+
     <p>
-        {!! link_to_route('voterentrys.create', 'Create Project') !!}
+        {!! link_to_route('voterentrys.create', 'Create voter list') !!}
     </p>
 @endsection

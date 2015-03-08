@@ -1,34 +1,34 @@
 <?php namespace App\Http\Controllers;
 use Input;
 use Redirect;
+use App\Candidate;
 use App\Http\Requests;
-use App\Voterentry;
+use App\Http\Requests\StoreCandidaterequest;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class VoterentrysController extends Controller {
+class CandidatesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-    public function index()
-    {
-        $voterentrys = Voterentry::all();
-        return view('voterentrys.index', compact('voterentrys'));
-    }
-
+	public function index(Candidate $candidate)
+	{
+        $candidates = Candidate::all();
+        return view('candidates.index', compact('candidates'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Candidate $candidate)
 	{
-        return view('voterentrys.create');
+        return view('candidates.create');
 	}
 
 	/**
@@ -36,15 +36,13 @@ class VoterentrysController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\StoreCandidaterequest $request)
 	{
-
         $input = Input::all();
-        Voterentry::create( $input );
+        Candidate::create( $input );
 
-        return Redirect::route('voterentrys.index')->with('message', 'Project created');
-    }
-
+        return Redirect::route('candidates.index')->with('message', 'Project created');
+	}
 
 	/**
 	 * Display the specified resource.
@@ -52,10 +50,10 @@ class VoterentrysController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
+    public function show(Candidate $candidate)
+    {
+        return view('candidates.show', compact('candidate'));
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
